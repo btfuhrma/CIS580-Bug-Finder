@@ -6,7 +6,7 @@ from nltk.tokenize import word_tokenize
 import nltk
 import re
 nltk.download('punkt_tab')
-class Vectorizor():
+class Vectorizor:
     
     # Initialize class with the report file and the source code directory
     def __init__(self, reportFile, sourceCodeDirectory):
@@ -22,18 +22,27 @@ class Vectorizor():
         return
 
     def getReportContent(self):
+        if not os.path.exists(self.reportFile):
+            raise FileNotFoundError(f"The file '{self.reportFile}' was not found.")
         with open(self.reportFile ,'r') as f:
             content = f.read()
+            if len(content) <= 0:
+                raise Exception(f"The file '{self.reportFile}' is empty.")
             self.reportContents = self.stem_text(content)
 
     # Get list of source code file names
     def getSourceContent(self):
+        if not os.path.exists(self.sourceCodeDirectory):
+            raise FileNotFoundError(f"The directory '{self.sourceCodeDirectory}' was not found.")
         readList = []
         for root, dirs, files in os.walk(self.sourceCodeDirectory):
             for file in files:
                 if file not in readList:
                     with open(os.path.join(root, file), 'r') as f:
                         content = f.read()
+                        if len(content) <= 0:
+                            readList.append(file)
+                            pass
                         stemmed_content = self.stem_text(content)
                         self.sourceCodeContents.append(stemmed_content)
                         self.sourceCodeFiles.append(file)
