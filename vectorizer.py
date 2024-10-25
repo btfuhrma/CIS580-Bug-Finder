@@ -4,6 +4,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 from nltk.stem import PorterStemmer
 from nltk.tokenize import word_tokenize
 import nltk
+import re
 nltk.download('punkt_tab')
 class Vectorizor():
     
@@ -41,7 +42,12 @@ class Vectorizor():
         return
     
     def stem_text(self, text):
-        text = text.replace('_', ' ') # Separate snake case used
+        text = text.replace('_', ' ') # Separate snake case when used
+        text = re.sub(r'(?<!^)(?=[A-Z])', ' ', text)  # Separate camel case when used
+
+        text = re.sub(r'\(\)', '', text)  # Remove paranthesis from methods
+        text = re.sub(r'\(', ' ', text)   # Remove paranthesis from methods
+        text = re.sub(r'\)', ' ', text)   # Remove paranthesis from methods
         stemmer = PorterStemmer()
         tokens = word_tokenize(text)
         stemmed_tokens = [stemmer.stem(token) for token in tokens]
