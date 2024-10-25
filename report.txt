@@ -1,0 +1,29 @@
+Title: Bug Report - User Management Feature
+
+Report ID: 001
+Date: 2024-10-25
+Reported By: user@example.com
+
+Description:
+This is a bug report for the user management feature. The login function fails when the user inputs an incorrect password. 
+
+Expected Behavior:
+When a user tries to log in with an incorrect password, they should receive a clear message indicating that their password is incorrect, without any leakage of information about the username.
+
+Actual Behavior:
+Currently, the system returns a generic "Incorrect password." message, but it does not specify whether the username was found or not. This could lead to security concerns as it does not prevent brute-force attacks effectively.
+
+Steps to Reproduce:
+1. Call the `login` function with an existing username and an incorrect password.
+2. Observe the output message.
+
+Additional Information:
+- The system uses the following user credentials:
+    - Username: admin
+    - Password: password
+    - Email: admin@example.com
+- Suggested improvement: 
+    - Enhance the error handling in the `login` function to specify that if a username does not exist, a different message should be returned, such as "User not found." This will help in preventing username enumeration attacks.
+
+Attachments:
+- Screenshots or logs if available.
