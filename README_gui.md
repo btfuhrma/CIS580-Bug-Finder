@@ -20,12 +20,12 @@ The Bug Finder Tool GUI allows users to:
 
 - Python 3.x
 - Tkinter (usually included with Python)
-- Any additional libraries used in `vectorizer.py` (ensure they are installed)
+- Any additional libraries used in 'vectorizer.py' (ensure they are installed)
 
 ## Installation
 
 1. **Clone the Repository**:
-   ```bash
+   '''bash
    git clone https://github.com/yourusername/CIS580-Bug-Finder.git
    cd CIS580-Bug-Finder
 
