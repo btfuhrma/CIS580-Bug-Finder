@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import ttk, messagebox, filedialog
+from tkinter import ttk, filedialog
 import os
 from vectorizer import Vectorizor  # Ensure this is the correct path to your vectorizer module
 
@@ -29,6 +29,13 @@ class BugFinderGUI:
         # Analyze Button
         ttk.Button(self.master, text="Analyze", command=self.analyze_report).grid(row=2, column=1)
 
+        # Results Section (Initially hidden)
+        self.results_label = ttk.Label(self.master, text="Results will be shown here.")
+        self.results_label.grid(row=3, column=0, columnspan=3, sticky="w")
+
+        self.results_text = tk.Text(self.master, width=60, height=10, wrap=tk.WORD, state=tk.DISABLED)
+        self.results_text.grid(row=4, column=0, columnspan=3, pady=10)
+
     def browse_report_file(self):
         """Open a file dialog to select a bug report file."""
         filename = filedialog.askopenfilename(filetypes=[("Text files", "*.txt")])
@@ -50,12 +57,12 @@ class BugFinderGUI:
 
         # Validate report file input
         if not report_file or not os.path.isfile(report_file):
-            messagebox.showerror("Error", "Please select a valid bug report file.")
+            self.display_results("Error: Please select a valid bug report file.")
             return
 
         # Validate source directory input
         if not source_dir or not os.path.isdir(source_dir):
-            messagebox.showerror("Error", "Please select a valid source code directory.")
+            self.display_results("Error: Please select a valid source code directory.")
             return
 
         # Create an instance of the Vectorizor class and perform analysis
@@ -71,10 +78,27 @@ class BugFinderGUI:
                 result_message += f"File: {file_name}, Similarity Score: {score:.4f}\n"
 
             result_message += f"\nClosest file: {closest_file}, Similarity score: {closest_score:.4f}"
-            messagebox.showinfo("Analysis Results", result_message)
+
+            # Display results in the same window
+            self.display_results(result_message)
 
         except Exception as e:
-            messagebox.showerror("Error", f"An error occurred during analysis: {str(e)}")
+            self.display_results(f"Error: An error occurred during analysis: {str(e)}")
+
+    def display_results(self, message):
+        """Update the results section in the GUI with the analysis message."""
+        # Enable the Text widget to update it
+        self.results_text.config(state=tk.NORMAL)
+
+        # Clear previous content
+        self.results_text.delete(1.0, tk.END)
+
+        # Insert new message
+        self.results_text.insert(tk.END, message)
+
+        # Disable the Text widget again to prevent user editing
+        self.results_text.config(state=tk.DISABLED)
+
 
 if __name__ == "__main__":
     root = tk.Tk()
