@@ -1,14 +1,7 @@
 # Bug Finder Tool GUI
 
-This document provides an overview of the Bug Finder Tool's graphical user interface (GUI), which is designed to help developers analyze bug reports against their source code files.
+This document provides an overview of the Bug Finder Tool's graphical user interface (GUI), which is designed to help developers analyze bug reports against their source code files.By calculating similarity scores between the bug report and relevant source code, the tool aids in identifying potential issues in the codebase.
 
-## Overview
-
-The Bug Finder Tool GUI allows users to:
-- Select a bug report file in plain text format.
-- Choose a directory containing source code files.
-- Analyze the bug report against the source code.
-- Display similarity scores and identify the closest matching file directly within the same window.
 
 ## Features
 
@@ -21,12 +14,13 @@ The Bug Finder Tool GUI allows users to:
 - Python 3.x
 - Tkinter (usually included with Python)
 - Any additional libraries used in 'vectorizer.py' (ensure they are installed)
+- Scikit-learn
+- NLTK (Natural Language Toolkit)
 
 ## Installation
 
 1. **Clone the Repository**:
-   '''bash
-   git clone https://github.com/yourusername/CIS580-Bug-Finder.git
+   ```bash
+   git clone https://github.com/btfuhrma/CIS580-Bug-Finder.git
    cd CIS580-Bug-Finder
-
 
