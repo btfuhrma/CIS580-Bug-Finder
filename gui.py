@@ -73,6 +73,7 @@ class BugFinderGUI:
             result_message += f"\nClosest file: {closest_file}, Similarity score: {closest_score:.4f}"
             messagebox.showinfo("Analysis Results", result_message)
 
+
         except Exception as e:
             messagebox.showerror("Error", f"An error occurred during analysis: {str(e)}")
 
