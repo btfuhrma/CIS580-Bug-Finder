@@ -1,0 +1,4 @@
+Bug ID: 92757
+Summary: StyledText: Add caret listener
+Description: null
+File: org.eclipse.swt.custom.StyledText.java

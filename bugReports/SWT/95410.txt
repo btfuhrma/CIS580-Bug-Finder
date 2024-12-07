@@ -1,0 +1,4 @@
+Bug ID: 95410
+Summary: GDI+ drawString is not consistent with GDI
+Description: If you have a structure which is rendered to a GC, you need to be able to predict things like how large a String is going to be painted. But, if a previous visitor has triggered GDI+, drawString's behavior is altered. The chars get expanded and compressed in funny ways, and generally look bad.
+File: org.eclipse.swt.graphics.GC.java

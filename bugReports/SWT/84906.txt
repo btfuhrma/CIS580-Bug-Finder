@@ -1,0 +1,4 @@
+Bug ID: 84906
+Summary: We found some typos or broken links.
+Description: See file attached.
+File: org.eclipse.swt.custom.CCombo.java

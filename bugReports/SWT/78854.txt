@@ -1,0 +1,4 @@
+Bug ID: 78854
+Summary: Memory leak in ClipboardProxy.getFunc()
+Description: At the end of ClipboardProxy.getFunc() OS.gtk_selection_data_set() function is used. However this function copies data so tdata.pValue should be freed using OS.g_free().
+File: org.eclipse.swt.dnd.Clipboard.java

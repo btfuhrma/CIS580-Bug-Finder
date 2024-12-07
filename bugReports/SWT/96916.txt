@@ -1,0 +1,4 @@
+Bug ID: 96916
+Summary: Spinner.setToolTipText() doesn't work
+Description: No tooltip appears on the spinner widget after Spinner.setToolTipText().
+File: org.eclipse.swt.widgets.Combo.java

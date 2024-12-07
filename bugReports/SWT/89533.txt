@@ -1,0 +1,4 @@
+Bug ID: 89533
+Summary: [Themes] Colors and Fonts preferences page has funny icons for color entries
+Description: None
+File: org.eclipse.swt.widgets.ImageList.java

@@ -1,0 +1,4 @@
+Bug ID: 97177
+Summary: [misc] Chinese IME status lost
+Description: Open chinese IME in eclipse text editor,then switch to another window and switch back to Eclipse, chinese IME are closed, and have to open again.
+File: org.eclipse.swt.widgets.Shell.java

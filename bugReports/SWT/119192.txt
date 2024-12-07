@@ -1,0 +1,4 @@
+Bug ID: 119192
+Summary: [CCombo] CCombo Mouse problem (listeners not fired)
+Description: The CCombo does not responde to MouseMove or MouseTrack listener. Also, does not respond as Control throught Display (Gets Text and Button).
+File: org.eclipse.swt.custom.CCombo.java

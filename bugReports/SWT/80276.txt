@@ -1,0 +1,4 @@
+Bug ID: 80276
+Summary: CBannerLayout calls Control.update too often
+Description: CBannerLayout.layout() calls Control.update() all the time. Using update() is good for interactive resizing, but otherwise it is slow and should not be used. This code should be fixed to only call update() during resize, if at all.
+File: org.eclipse.swt.custom.CBannerLayout.java

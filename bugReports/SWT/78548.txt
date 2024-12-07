@@ -1,0 +1,4 @@
+Bug ID: 78548
+Summary: [consistency] Button Selection fires before MouseUp
+Description: - run the ControlExample, Button tab - turn on listeners MouseUp and Selection - click on an example Button -&gt; on OSX you'll get Selection - MouseUp -&gt; everywhere else you'll get MouseUp - Selection
+File: org.eclipse.swt.widgets.Button.java

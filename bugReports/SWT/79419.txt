@@ -1,0 +1,4 @@
+Bug ID: 79419
+Summary: [Preferences] Need a link component
+Description: We need to create a some sort of component for preference pages to use for linking. We should look into pushing down the org.eclipse.ui.views.framelist mechanism possibly.
+File: org.eclipse.swt.internal.win32.LITEM.java

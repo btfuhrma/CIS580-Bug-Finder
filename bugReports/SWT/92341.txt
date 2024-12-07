@@ -1,0 +1,4 @@
+Bug ID: 92341
+Summary: DCR - Add SWT.VIRTUAL style to Tree widget
+Description: Please add a possibility to lazy-load the first tree level (like SWT.VIRTUAL for the table widget).
+File: org.eclipse.swt.widgets.Tree.java

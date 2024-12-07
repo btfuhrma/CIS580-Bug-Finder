@@ -1,0 +1,4 @@
+Bug ID: 94603
+Summary: Spinner does not look like Windows standard one
+Description: SWT Spinner puts buttons outside of the text box inset border. Standard look of Windows UpDown control is different. The buttons are inside the inset border.
+File: org.eclipse.swt.widgets.Spinner.java

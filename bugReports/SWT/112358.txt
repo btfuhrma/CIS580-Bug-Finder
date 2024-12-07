@@ -1,0 +1,4 @@
+Bug ID: 112358
+Summary: Need a way to create a new Color based on an existing color
+Description: We need a way to create a new color from an existing color by varying the hue, saturation or brightness.
+File: org.eclipse.swt.graphics.RGB.java

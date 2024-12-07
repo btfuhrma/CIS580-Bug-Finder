@@ -1,0 +1,4 @@
+Bug ID: 83251
+Summary: Javadoc warnings in latest builds
+Description: I will attach a patch to get rid of them.
+File: org.eclipse.swt.custom.BidiSegmentListener.java

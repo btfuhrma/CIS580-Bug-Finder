@@ -1,0 +1,4 @@
+Bug ID: 86294
+Summary: Find/Replace not working "Illegal/Unsupported escape on the Mac
+Description: I can't do a search on a java file with the M5a build on the Mac. Find: mask4 &quot;Illegal/unsupported escape&quot; comes up in the Find / Replace dialog.
+File: org.eclipse.swt.widgets.Combo.java

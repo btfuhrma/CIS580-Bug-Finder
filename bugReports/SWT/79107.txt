@@ -1,0 +1,4 @@
+Bug ID: 79107
+Summary: [consistency] setItems(String[]) with null elements
+Description: Check if all platforms stop at null or ignore null elements.
+File: org.eclipse.swt.custom.CCombo.java
