@@ -105,3 +105,4 @@ if __name__ == "__main__":
     root = tk.Tk()
     bug_finder_gui = BugFinderGUI(root)
     root.mainloop()
+
