@@ -54,6 +54,8 @@ class VectorizerTest:
         normalized_path = normalized_path.replace(os.sep, '.').replace('/', '.')
 
         normalized_path = normalized_path.lstrip('.')
+        substring_to_remove = "swt.swt-3.1.src."
+        normalized_path = normalized_path.replace(substring_to_remove, "")
         
         return os.path.splitext(normalized_path.lower())[0]
 
@@ -71,14 +73,12 @@ def XMLParser(xmlFile, destDir):
         file = bug.find("./fixedFiles/file").text
 
         filePath = os.path.join("bugReports", destDir,f"{id}.txt")
-        with open(filePath, "w") as f:
+        with open(filePath, "w", encoding='utf-8') as f:
             f.write(f"Bug ID: {id}\n")
             f.write(f"Summary: {summary}\n")
             f.write(f"Description: {desc}\n")
             f.write(f"File: {file}\n")
 
 if __name__ == "__main__":
-    v = VectorizerTest("bugReports/SWT", os.path.join(".", "source_code", "swt-3.1", "src"), "SWTBugRepository.xml")
-    # v = VectorizerTest("bugReports/ZXing", os.path.join(".", "source_code", "ZXing-1.6"), "ZXingBugRepository.xml")
+    v = VectorizerTest("bugReports/SWT", os.path.join(".", "swt", "swt-3.1", "src"), "SWTBugRepository.xml")
     print(v.test())
-    # XMLParser("ZXingBugRepository.xml", "bugReports/ZXing")
