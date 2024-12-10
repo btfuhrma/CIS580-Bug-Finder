@@ -34,11 +34,11 @@ def test_load_report(setup_test_files):
 def test_load_source_code_files(setup_test_files):
     report_file, source_dir = setup_test_files
     vectorizor = Vectorizor(report_file, source_dir)
-    assert sorted(vectorizor.load_source_code_files()) == sorted(["file1.py", "file2.py"])
+    assert sorted(vectorizor.load_source_code_files()) == sorted([os.path.join(source_dir,"file1.py"), os.path.join(source_dir,"file2.py")])
 
 def test_get_closest_file(setup_test_files):
     report_file, source_dir = setup_test_files
     vectorizor = Vectorizor(report_file, source_dir)
     closest_file, closest_score = vectorizor.getClosestFile()
-    assert closest_file in ["file1.py", "file2.py"]
+    assert closest_file in [os.path.join(source_dir,"file1.py"), os.path.join(source_dir,"file2.py")]
     assert 0 <= closest_score <= 1
