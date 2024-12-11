@@ -7,7 +7,7 @@ class VectorizerTest:
         self.bugReportDir = bugReportsDir
         self.sourceCodeDir = sourceCodeDir
         self.xml = xml
-        self.prefix = ".\\source_code\\swt-3.1\\src\\"
+        self.prefix = ".\\swt\\swt-3.1\\src\\"
     def test(self):
         totalTest = 0
         passingTests = 0
@@ -26,12 +26,15 @@ class VectorizerTest:
                 root = tree.getroot()
                 bug_id = os.path.splitext(os.path.basename(file))[0]
                 bug = root.find(f".//bug[@id='{bug_id}']")
-                correctFile = bug.find("./fixedFiles/file").text
+                correctFiles = bug.findall("./fixedFiles/file")
+                correctFileList = []
+                for file in correctFiles:
+                    correctFileList.append(file.text)
 
-                corFileM = self.normalize_path(correctFile)
+                corFileM = [self.normalize_path(file, self.prefix) for file in correctFileList]
                 topFilesFix = [self.normalize_path(file, self.prefix) for file, _ in topFiles]
-
-                if corFileM in topFilesFix:
+                result = any(item in corFileM for item in topFilesFix)
+                if result:
                     passingTests += 1
                     print(f"{topFilesFix} {corFileM} {True}")
                 else:
@@ -54,8 +57,6 @@ class VectorizerTest:
         normalized_path = normalized_path.replace(os.sep, '.').replace('/', '.')
 
         normalized_path = normalized_path.lstrip('.')
-        substring_to_remove = "swt.swt-3.1.src."
-        normalized_path = normalized_path.replace(substring_to_remove, "")
         
         return os.path.splitext(normalized_path.lower())[0]
 
@@ -80,5 +81,5 @@ def XMLParser(xmlFile, destDir):
             f.write(f"File: {file}\n")
 
 if __name__ == "__main__":
-    v = VectorizerTest("bugReports/SWT", os.path.join(".", "swt", "swt-3.1", "src"), "SWTBugRepository.xml")
+    v = VectorizerTest("bugReports/SWT", os.path.join(".", "swt", "swt-3.1", "src", "org"), "SWTBugRepository.xml")
     print(v.test())

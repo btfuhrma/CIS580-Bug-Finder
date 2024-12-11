@@ -2,6 +2,7 @@ import os
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 from nltk.stem import WordNetLemmatizer
+from nltk.stem import PorterStemmer
 from nltk.tokenize import word_tokenize
 import nltk
 import re
@@ -52,22 +53,22 @@ class Vectorizor:
                 print("Unicode source error.")
         return contents
 
-    def lemmatize_text(self, text):
-        lemmatizer = WordNetLemmatizer()
+    def stem_text(self, text):
         text = text.replace('_', ' ')  # Separate snake case when used
         text = re.sub(r'(?<!^)(?=[A-Z])', ' ', text)  # Separate camel case when used
         text = re.sub(r'[\(\)]', ' ', text)  # Remove parentheses from methods
         tokens = word_tokenize(text)
-        lemmatized_tokens = [lemmatizer.lemmatize(token) for token in tokens]
-        return ' '.join(lemmatized_tokens)
+        stemmer = PorterStemmer()
+        stemmed_tokens = [stemmer.stem(token) for token in tokens]
+        return ' '.join(stemmed_tokens)
 
     def vectorize(self):
-        self.sourceCodeContents = [self.lemmatize_text(content) for content in self.sourceCodeContents]
-        self.reportContents = self.lemmatize_text(self.reportContents)
-        
-        skVectorizer = TfidfVectorizer(stop_words='english', ngram_range=(1, 2), max_df=0.95, min_df=2)
+        self.sourceCodeContents = [self.stem_text(content) for content in self.sourceCodeContents]
+        self.reportContents = self.stem_text(self.reportContents)
+        skVectorizor = TfidfVectorizer(stop_words='english')
+
         all_documents = [self.reportContents] + self.sourceCodeContents
-        tfidf_matrix = skVectorizer.fit_transform(all_documents)
+        tfidf_matrix = skVectorizor.fit_transform(all_documents)
         self.reportVector = tfidf_matrix[0:1]
         self.codeVectors = tfidf_matrix[1:]
 
