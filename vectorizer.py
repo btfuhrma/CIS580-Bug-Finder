@@ -9,6 +9,7 @@ import re
 
 nltk.download('punkt')
 nltk.download('wordnet')
+nltk.download('punkt_tab')
 
 class Vectorizor:
     def __init__(self, reportFile, sourceCodeDirectory):
