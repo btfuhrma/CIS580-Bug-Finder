@@ -8,8 +8,13 @@ How to clone:
     7. You should be cloned and just need to open the project folder in VSCode
 
 Dependencies:
-sklearn  - pip install scikit-learn 
+    - sklearn, nltk, tkinter, pytest  
+    - How to install:
+        - pip install scikit-learn nltk tk pytest 
 
-nltk - pip install nltk
+How to run:
+    1. Navigate to the folder 'CIS580-Bug-Finder'
+    2. Type 'python gui.py'
+
 
 
