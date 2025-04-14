@@ -69,15 +69,12 @@ class BugFinderGUI:
         vectorizor = Vectorizor(report_file, source_dir)
         
         try:
-            similarities, files = vectorizor.get_all_similarities()
-            closest_file, closest_score = vectorizor.getClosestFile()
+            top3List = vectorizor.getTop3ClosestFiles()
 
             # Prepare results for display
             result_message = "Similarity Scores:\n"
-            for file_name, score in zip(files, similarities):
+            for file_name, score in top3List:
                 result_message += f"File: {file_name}, Similarity Score: {score:.4f}\n"
-
-            result_message += f"\nClosest file: {closest_file}, Similarity score: {closest_score:.4f}"
 
             # Display results in the same window
             self.display_results(result_message)
